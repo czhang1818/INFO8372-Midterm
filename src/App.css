@@ -1,0 +1,83 @@
+.App {
+  min-height: 100vh;
+  background-color: #f8f9fa;
+}
+
+.card {
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  margin-bottom: 2rem;
+}
+
+.card-header {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.btn {
+  border-radius: 0.375rem;
+}
+
+.alert {
+  border-radius: 0.375rem;
+}
+
+.text-primary {
+  color: #0d6efd !important;
+}
+
+.bg-primary {
+  background-color: #0d6efd !important;
+}
+
+.bg-info {
+  background-color: #0dcaf0 !important;
+}
+
+.bg-warning {
+  background-color: #ffc107 !important;
+}
+
+.mb-4 {
+  margin-bottom: 1.5rem !important;
+}
+
+.py-4 {
+  padding-top: 2rem !important;
+  padding-bottom: 2rem !important;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.float-end {
+  float: right !important;
+}
+
+.me-2 {
+  margin-right: 0.5rem !important;
+}
+
+.text-muted {
+  color: #6c757d !important;
+}
+
+.text-success {
+  color: #198754 !important;
+}
+
+.text-danger {
+  color: #dc3545 !important;
+}
+
+.badge {
+  font-size: 0.75em;
+}
+
+.list-group-item {
+  border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.container-fluid {
+  max-width: 1200px;
+}
