@@ -1,16 +1,14 @@
-# Cloud Mid Frontend
+# Cloud Midterm Report
 
-## Rationale behind Selection of Serverless Architecture
+## Why serverless architecture was chosen
 
-This application was selected to be serverless due to the following reasons:
-
-1. **Cost Effectiveness**: I only pay what I utilize- no additional funds onto idleness.
-2. **Automatic Scaling**: It manages the automatic scaling and I do not need to adjust anything.
+1. **Cost Effectiveness**: I only pay for what I utilize, with no additional funds for idleness.
+2. **Automatic Scaling**: It manages the automatic scaling, and I do not need to adjust anything.
 3. **Less Operational Overhead**: No servers to watch over or maintain, big time saved.
 4. **Quick Deployment**: I am able to iterate and release new updates very fast.
 5. **High Availability**: AWS region-based built-in redundancy maintains the smooth running of the app.
 
-## The IAM Protection of Lambda Execution
+## How IAM secures Lambda execution
 
 The IAM configuration is based on the least privilege principle:
 
@@ -24,7 +22,7 @@ The IAM configuration is based on the least privilege principle:
 - None of the wildcard permissions (`*`) is allowed, it is all specific.
 - Distinct separation of what is required to be deployed and what is required to be executed.
 
-## How Automatic Scaling Works
+## How automatic scaling works
 
 AWS Lambda is automatically scaled on:
 
@@ -33,7 +31,7 @@ AWS Lambda is automatically scaled on:
 - **Memory Allocation**: Memory scaling with Compute power.
 - **No Opinionated**: Scaling is fully automatic and non-opaque.
 
-## What Would It Take to Change of Production
+## What changes would be required for production
 
 In order to deploy production, the following changes would be needed:
 
