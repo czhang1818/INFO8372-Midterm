@@ -1,67 +1,129 @@
-### Why Serverless Architecture Was Chosen
+# Cloud Mid Frontend
 
-Serverless architecture was chosen for this application because:
+## Rationale behind Selection of Serverless Architecture
 
-1. **Cost Efficiency**: Pay only for actual usage, no idle resources
-2. **Automatic Scaling**: Handles traffic spikes without manual intervention
-3. **Reduced Operational Overhead**: No servers to manage or maintain
-4. **Fast Deployment**: Quick iteration and deployment cycles
-5. **High Availability**: Built-in redundancy across AWS regions
+This application was selected to be serverless due to the following reasons:
 
-### How IAM Secures Lambda Execution
+1. **Cost Effectiveness**: I only pay what I utilize- no additional funds onto idleness.
+2. **Automatic Scaling**: It manages the automatic scaling and I do not need to adjust anything.
+3. **Less Operational Overhead**: No servers to watch over or maintain, big time saved.
+4. **Quick Deployment**: I am able to iterate and release new updates very fast.
+5. **High Availability**: AWS region-based built-in redundancy maintains the smooth running of the app.
 
-The IAM configuration follows the least privilege principle:
+## The IAM Protection of Lambda Execution
 
-**Lambda Execution Role** (`lambda-execution-role`):
-- Only allows CloudWatch logging permissions
-- No access to other AWS services
-- Minimal attack surface
+The IAM configuration is based on the least privilege principle:
+
+**Lambda Implementation Role** (`lambda-implementation-role`):
+- Only makes CloudWatch logs-nothing more.
+- No connection to any other AWS service, and things are kept clean.
+- Limited permissions result in minimal attack surface.
 
 **User Policy** (`cloud-mid-user`):
-- Specific permissions for required AWS services
-- No wildcard (`*`) permissions
-- Separated concerns between deployment and execution
+- Only send the permissions that are necessary to the AWS services.
+- None of the wildcard permissions (`*`) is allowed, it is all specific.
+- Distinct separation of what is required to be deployed and what is required to be executed.
 
-### How Automatic Scaling Works
+## How Automatic Scaling Works
 
-AWS Lambda automatically scales based on:
-- **Concurrent Requests**: Each request gets a separate container
-- **Burst Capacity**: Instant scaling for sudden traffic spikes
-- **Memory Allocation**: Scales compute power with memory size
-- **No Configuration Required**: Scaling happens transparently
+AWS Lambda is automatically scaled on:
 
-### What Changes Would Be Required for Production
+- **Forced Requests**: Each request creates a container.
+- **Burst Capacity**: Scaling at a moment of high traffic sudden increase.
+- **Memory Allocation**: Memory scaling with Compute power.
+- **No Opinionated**: Scaling is fully automatic and non-opaque.
 
-For production deployment, the following changes would be required:
+## What Would It Take to Change of Production
+
+In order to deploy production, the following changes would be needed:
 
 1. **API Security**:
-   - Add API keys and usage plans
-   - Implement Cognito authentication
-   - Add request validation and throttling
+   - Add API keys and usage plans.
+   - Add Cognito authentication as an additional security.
+   - Install request validation and throttling to manage safe traffic.
 
 2. **Monitoring & Alerting**:
-   - Set up CloudWatch alarms for error rates
-   - Configure custom metrics
-   - Add distributed tracing with X-Ray
+   - Produce CloudWatch error rate alarms.
+   - Include additional measures to gain a better understanding.
+   - X-Ray Deploy distributed tracing to monitor request flows.
 
 3. **Environment Management**:
-   - Separate dev/staging/prod environments
-   - Environment-specific configurations
-   - Blue/green deployment strategies
+   - Individual development, testing, and production.
+   - Adjust environment-specific settings.
+   - Apply blue/green implementation plans in order to reduce downtimes.
 
 4. **Data Persistence**:
-   - Add DynamoDB for event storage
-   - Implement data retention policies
-   - Add backup and recovery procedures
+   - Add DynamoDB to store event information.
+   - Install data retention policies.
+   - Establish contingency and recovery processes in order to protect information.
 
 5. **Performance Optimization**:
-   - Lambda function memory tuning
-   - Cold start mitigation strategies
-   - VPC configuration for database access
+   - Tune Lambda operates in memory settings.
+   - Put measures to alleviate cold starts.
 
-## Features
+## Screenshots
 
-- **Health Check**: Displays application health information from Lambda function
-- **Event Form**: Sends events to the Lambda function via API Gateway
-- **Heartbeat Monitor**: Simulates EventBridge scheduled executions
-- **Responsive Design**: Works on desktop and mobile devices
+### Architecture Diagram
+
+**Figure 1: System Architecture Overview**
+![Architecture Diagram](screenshots/architecture-diagram.png)
+
+### IAM Configuration
+
+**Figure 2: IAM User - cloud-mid-user**
+![IAM User](screenshots/iam-user.png)
+
+**Figure 3: Custom IAM Policy Attached to User**
+![IAM Policy](screenshots/iam-policy.png)
+
+**Figure 4: Lambda Execution Role with Trust Policy**
+![IAM Role](screenshots/iam-role.png)
+
+### Lambda Functions
+
+**Figure 5: Health API Lambda Function Configuration**
+![Health API Function](screenshots/lambda-health-function.png)
+
+**Figure 6: Heartbeat Lambda Function Configuration**
+![Heartbeat Function](screenshots/lambda-heartbeat-function.png)
+
+**Figure 7: CloudWatch Logs for Lambda Executions**
+![CloudWatch Logs](screenshots/cloudwatch-logs.png)
+
+### API Gateway
+
+**Figure 8: API Gateway Resources (/health and /event)**
+![API Gateway Resources](screenshots/api-gateway-resources.png)
+
+**Figure 9: API Gateway Deployment Stage**
+![API Gateway Deployment](screenshots/api-gateway-deployment.png)
+
+### EventBridge
+
+**Figure 10: EventBridge Scheduled Rule (rate 5 minutes)**
+![EventBridge Rule](screenshots/eventbridge-rule.png)
+
+**Figure 11: EventBridge Rule Targets**
+![EventBridge Targets](screenshots/eventbridge-targets.png)
+
+### Frontend Application
+
+**Figure 12: AWS Amplify Deployment**
+![Amplify Depolyment](screenshots/amplify-deployment.png)
+
+**Figure 13: Full Application Dashboard**
+![Full Dashboard](screenshots/frontend-dashboard.png)
+
+**Figure 14: Event Submission Form**
+![Event Form](screenshots/frontend-event-form.png)
+
+**Figure 15: Heartbeat Monitor Component**
+![Heartbeat Monitor](screenshots/frontend-heartbeat-monitor.png)
+
+### Testing
+
+**Figure 16: Health Endpoint API Test**
+![API Health Test](screenshots/api-test-health.png)
+
+**Figure 17: Event Endpoint API Test**
+![API Event Test](screenshots/api-test-event.png)
